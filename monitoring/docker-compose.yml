@@ -41,7 +41,18 @@ services:
     networks:
       - monitoring_network
     restart: unless-stopped
-  
+
+
+  kafka-exporter:
+    image: danielqsj/kafka-exporter:latest
+    container_name: kafka-exporter
+    command: ["--kafka.server=43.200.39.139:9092"]
+    ports:
+      - "9308:9308"
+    networks:
+      - monitoring_network
+    restart: unless-stopped
+
 
   # influxdb-exporter:
   #   image: prom/influxdb-exporter
