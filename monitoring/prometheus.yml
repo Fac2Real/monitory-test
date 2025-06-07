@@ -31,4 +31,9 @@ scrape_configs:
   - job_name: 'spring-exporter'
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: ['host.docker.internal:8080']  # 실제 백엔드 주소와 포트로 변경
+      - targets: ['host.docker.internal:8080']
+
+  - job_name: "fastapi"
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ["host.docker.internal:8000"]
