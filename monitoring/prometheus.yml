@@ -22,9 +22,13 @@ scrape_configs:
 
   - job_name: 'flink-exporter'
     static_configs:
-      # - targets: ['localhost:9249']
       - targets: ['host.docker.internal:9249']
   
   - job_name: 'kafka-exporter'
     static_configs:
       - targets: ['host.docker.internal:9308']
+
+  - job_name: 'spring-exporter'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8080']  # 실제 백엔드 주소와 포트로 변경

@@ -54,18 +54,18 @@ services:
     restart: unless-stopped
 
 
-  # influxdb-exporter:
-  #   image: prom/influxdb-exporter
-  #   container_name: influxdb-exporter
-  #   ports:
-  #     - "9122:9122"
-  #   environment:
-  #     - INFLUXDB_URL=${INFLUXDB_URL}
-  #     - INFLUXDB_USERNAME=
-  #     - INFLUXDB_PASSWORD=
-  #   networks:
-  #     - monitoring_network
-  #   restart: unless-stopped
+  influxdb-exporter:
+    image: prom/influxdb-exporter
+    container_name: influxdb-exporter
+    ports:
+      - "9122:9122"
+    environment:
+      - INFLUXDB_URL=${INFLUXDB_URL}
+      - INFLUXDB_USERNAME=
+      - INFLUXDB_PASSWORD=
+    networks:
+      - monitoring_network
+    restart: unless-stopped
   
 
 networks:
