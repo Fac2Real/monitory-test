@@ -7,9 +7,19 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090']
 
-
   - job_name: 'grafana'
     scrape_interval: 5s
     static_configs:
       - targets: ['grafana:3000']
 
+  - job_name: 'cloudwatch-exporter'
+    static_configs:
+      - targets: ['cloudwatch-exporter:9106']
+
+  - job_name: 'influxdb-exporter'
+    static_configs:
+      - targets: ['influxdb-exporter:9122']
+
+  - job_name: 'flink'
+    static_configs:
+      - targets: ['flink-jobmanager:9249', 'flink-taskmanager:9249']
