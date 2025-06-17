@@ -1,0 +1,39 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'grafana'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['grafana:3000']
+
+  - job_name: 'cloudwatch-exporter'
+    static_configs:
+      - targets: ['cloudwatch-exporter:9106']
+
+  - job_name: 'influxdb-exporter'
+    static_configs:
+      - targets: ['influxdb-exporter:9122']
+
+  - job_name: 'flink-exporter'
+    static_configs:
+      - targets: ['host.docker.internal:9249']
+  
+  - job_name: 'kafka-exporter'
+    static_configs:
+      - targets: ['host.docker.internal:9308']
+
+  - job_name: 'spring-exporter'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8080']
+
+  - job_name: "fastapi"
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ["host.docker.internal:8000"]

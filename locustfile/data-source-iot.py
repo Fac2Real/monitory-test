@@ -2,9 +2,12 @@ import json
 import random
 import uuid
 import os
+from dotenv import load_dotenv
 from locust import task, between
 from locust_plugins.users.mqtt import MqttUser
 from datetime import datetime, timezone
+
+load_dotenv()
 
 # 환경 변수에서 AWS IoT 엔드포인트를 가져옵니다.
 AWS_IOT_ENDPOINT = os.getenv("AWS_IOT_BROKER")
